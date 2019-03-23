@@ -54,7 +54,10 @@ class App extends Component {
           sunset={this.state.sunset}
           error={this.state.error}
         />
+        <div className="cityContainer"> 
         <CityWeather city={"Tyumen"} />
+        <CityWeather city={"Petropavlovsk"} />
+        </div>
       </div>
     );
   }

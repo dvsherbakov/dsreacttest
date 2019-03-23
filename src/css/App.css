@@ -32,3 +32,8 @@
     transform: rotate(360deg);
   }
 }
+
+.cityContainer{
+  margin: 12px;
+  flex-flow: column;
+}

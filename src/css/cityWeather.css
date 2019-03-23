@@ -1,4 +1,12 @@
 .citypanel{
+    width: 48%;
     margin: 10px 10px 20px 10px;
-    background-color: grey;
+    border-color: grey;
+    border: 1px solid;
+    border-radius: 5px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.4em;
+}
+.cityContainer p{
+    margin: 4px;
 }
