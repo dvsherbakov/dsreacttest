@@ -16,7 +16,8 @@ class App extends Component {
     country: undefined,
     sunrise: undefined,
     sunset: undefined,
-    error: undefined
+    error: undefined,
+    forceCity:undefined
   }
 
   gettingWeather = async (e)=>{
@@ -55,8 +56,13 @@ class App extends Component {
           error={this.state.error}
         />
         <div className="cityContainer"> 
-        <CityWeather city={"Tyumen"} />
-        <CityWeather city={"Petropavlovsk"} />
+        <CityWeather 
+          city={"Tyumen"} 
+          wm = {this.gettingWeather}
+        />
+        <CityWeather 
+          city={"Petropavlovsk"} 
+          wm = {this.gettingWeather} />
         </div>
       </div>
     );
