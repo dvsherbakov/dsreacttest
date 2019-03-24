@@ -7,6 +7,7 @@ class CityWeather extends React.Component{
     state = {
         temp: undefined
       }
+      
     gettingWeather = async (e)=>{
         e.preventDefault();
         const city = e.target.elements.city.value;
