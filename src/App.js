@@ -4,6 +4,8 @@ import Info from "./components/info";
 import Form from "./components/form"
 import Weather from "./components/weather"
 import CityWeather from "./components/cityWeather"
+//import rw from "./components/reqwestWeather"
+import Tpp from "./components/tApp"
 
 const API_Key = "82b797b6ebc625032318e16f1b42c016";
 //https://api.openweathermap.org/data/2.5/weather?q=Tyumen&appid=82b797b6ebc625032318e16f1b42c016&units=metric
@@ -42,10 +44,13 @@ class App extends Component {
     }
   }
 
+  
+
   render() {
     return (
       <div className="App">
         <Info />
+        <Tpp />
         <Form weatherMethod={this.gettingWeather}/>
         <Weather 
           temp={this.state.temp}
@@ -57,12 +62,11 @@ class App extends Component {
         />
         <div className="cityContainer"> 
         <CityWeather 
-          city={"Tyumen"} 
-          wm = {this.gettingWeather}
+          city={"Tyumen"}   
         />
         <CityWeather 
           city={"Petropavlovsk"} 
-          wm = {this.gettingWeather} />
+        />
         </div>
       </div>
     );
