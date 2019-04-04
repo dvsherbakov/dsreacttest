@@ -17,7 +17,6 @@ class CityWeather extends Component{
         }
     }
     componentDidMount(){
-        console.log(this.state.city);
         this.setState({isLoading:true});
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${API_Key}&units=metric`)
         .then(response => {

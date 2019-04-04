@@ -61,9 +61,10 @@ class App extends Component {
 
   getCities() {
     return (
-      this.cities.map(ct => {
+      this.cities.map((ct, i) => {
         return (
           <CityWeather
+            key={i}
             city={ct.ne}
             cityRusName={ct.re}
           />
