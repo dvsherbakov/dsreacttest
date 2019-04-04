@@ -12,6 +12,12 @@ const API_Key = "82b797b6ebc625032318e16f1b42c016";
 
 class App extends Component {
 
+  cities = [
+    { ne: "Tyumen", re: "Тюмень" },
+    { ne: "Petropavlovsk, Kz", re: "Петропавловск" },
+    { ne: "Novoseleznevo", re: "Новоселезнево" },
+    { ne: "Surgut", re: "Сургут" }]
+
   state = {
     temp: undefined,
     city: undefined,
@@ -19,13 +25,13 @@ class App extends Component {
     sunrise: undefined,
     sunset: undefined,
     error: undefined,
-    forceCity:undefined
+    forceCity: undefined
   }
 
-  gettingWeather = async (e)=>{
+  gettingWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
-    if (city){
+    if (city) {
       const api_url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_Key}&units=metric`);
       const data = await api_url.json();
       //console.log(data);
@@ -44,13 +50,35 @@ class App extends Component {
     }
   }
 
+  getCity (sityEng, sityRu) {
+    return (
+      <CityWeather
+        city={sityEng}
+        cityRusName={sityRu}
+      />
+    );
+  }
+
+  getCities() {
+    return (
+      this.cities.map(ct => {
+        return (
+          <CityWeather
+            city={ct.ne}
+            cityRusName={ct.re}
+          />
+        )
+      })
+    )
+  }
+
   render() {
     return (
       <div className="App">
         <Info />
-       
-        <Form weatherMethod={this.gettingWeather}/>
-        <Weather 
+
+        <Form weatherMethod={this.gettingWeather} />
+        <Weather
           temp={this.state.temp}
           city={this.state.city}
           country={this.state.country}
@@ -58,23 +86,8 @@ class App extends Component {
           sunset={this.state.sunset}
           error={this.state.error}
         />
-        <div className="cityContainer"> 
-        <CityWeather 
-          city={"Tyumen"} 
-          cityRusName = {"Тюмень"}  
-        />
-        <CityWeather 
-          city={"Petropavlovsk, Kz"} 
-          cityRusName = {"Петропавловск"} 
-        />
-        <CityWeather 
-          city={"Novoseleznevo"}
-          cityRusName={"Новоселезнево"}
-        />
-        <CityWeather 
-          city={"Surgut"}
-          cityRusName={"Сургут"}
-        />
+        <div className="cityContainer">
+          {this.getCities()}
         </div>
       </div>
     );
